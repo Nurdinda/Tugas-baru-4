@@ -1,0 +1,51 @@
+# Fungsi untuk melakukan perkalian matriks
+def multiply_matrices(A, B):
+    # Mendapatkan ukuran matriks
+    rows_A = len(A)
+    cols_A = len(A[0])
+    rows_B = len(B)
+    cols_B = len(B[0])
+
+    # Cek apakah perkalian matriks bisa dilakukan
+    if cols_A != rows_B:
+        return "Matriks tidak dapat dikalikan karena ukurannya tidak sesuai."
+
+    # Inisialisasi matriks hasil dengan ukuran yang sesuai
+    result = [[0 for _ in range(cols_B)] for _ in range(rows_A)]
+
+    # Melakukan perkalian matriks
+    for i in range(rows_A):
+        for j in range(cols_B):
+            for k in range(cols_A):
+                result[i][j] += A[i][k] * B[k][j]
+
+    return result
+
+# Contoh matriks 3x3
+A = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+B = [
+    [9, 8, 7],
+    [6, 5, 4],
+    [3, 2, 1]
+]
+
+# Eksekusi fungsi perkalian matriks
+result = multiply_matrices(A, B)
+
+# Tampilkan hasil
+if isinstance(result, str):
+    print(result)
+else:
+    print("Hasil perkalian matriks:")
+    for row in result:
+        print(row)
+
+Hasil perkalian matriks:
+[30, 24, 18]
+[84, 69, 54]
+[138, 114, 90]
